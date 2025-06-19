@@ -53,4 +53,8 @@ public class Celebracion {
     public void setPais(String pais) {
         this.pais = pais;
     }
+    
+    public void mostrarCelebracion(){
+        System.out.println(Integer.toString(id) + " " + fecha.toString() + " " + descripcion + " "+pais);
+    }
 }

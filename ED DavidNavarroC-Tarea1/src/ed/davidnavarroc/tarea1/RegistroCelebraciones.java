@@ -4,6 +4,8 @@
  */
 package ed.davidnavarroc.tarea1;
 
+import java.util.Date;
+
 /**
  *
  * @author angel
@@ -96,7 +98,8 @@ public class RegistroCelebraciones extends javax.swing.JFrame {
                 .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +126,12 @@ public class RegistroCelebraciones extends javax.swing.JFrame {
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         // TODO add your handling code here:
+        Date fecha = (Date) txtFecha.getValue();
+        String descripcion = txtDescripcion.getText();
+        String pais = txtPais.getText();
         
+        gestor.registrarCelebracion(fecha, descripcion, pais);
+        gestor.imprimirCelebraciones();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     /**

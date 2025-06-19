@@ -5,6 +5,7 @@
 package ed.davidnavarroc.tarea1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -17,8 +18,18 @@ public class Gestor {
     private int agregarID = 1;
     
     public void registrarCelebracion(Date fecha, String descripcion, String pais){
-        this.agregarID = this.agregarID + 1;
         Celebracion nuevaCelebracion = new Celebracion(agregarID, fecha, descripcion, pais);
         celebraciones.add(nuevaCelebracion); 
+        this.agregarID = this.agregarID + 1;
+    }
+
+    public ArrayList<Celebracion> getCelebraciones() {
+        return celebraciones;
+    }
+    
+    public void imprimirCelebraciones() {
+      for(int i = 0; i < this.celebraciones.size(); i++) {   
+        this.celebraciones.get(i).mostrarCelebracion();
+        }  
     }
 }
