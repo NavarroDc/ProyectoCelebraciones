@@ -11,7 +11,7 @@ package ed.davidnavarroc.tarea1;
 public class Menu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
-
+    private Gestor gestor = new Gestor();
     /**
      * Creates new form Menu
      */
@@ -106,12 +106,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMenuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuListaActionPerformed
         // TODO add your handling code here:
+        ListadoCelebraciones ventanaLista = new ListadoCelebraciones();
+        ventanaLista.setVisible(true);
+        ventanaLista.recibirGestor(gestor);
+        ventanaLista.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuListaActionPerformed
 
     private void btnMenuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuRegistrarActionPerformed
         // TODO add your handling code here:
         RegistroCelebraciones ventanaRegistro = new RegistroCelebraciones();
         ventanaRegistro.setVisible(true);
+        ventanaRegistro.recibirGestor(gestor);
         ventanaRegistro.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuRegistrarActionPerformed
 

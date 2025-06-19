@@ -26,6 +26,18 @@ public class Gestor {
     public ArrayList<Celebracion> getCelebraciones() {
         return celebraciones;
     }
+
+    public void setCelebraciones(ArrayList<Celebracion> celebraciones) {
+        this.celebraciones = celebraciones;
+    }
+
+    public int getAgregarID() {
+        return agregarID;
+    }
+
+    public void setAgregarID(int agregarID) {
+        this.agregarID = agregarID;
+    }
     
     public void imprimirCelebraciones() {
       for(int i = 0; i < this.celebraciones.size(); i++) {   
