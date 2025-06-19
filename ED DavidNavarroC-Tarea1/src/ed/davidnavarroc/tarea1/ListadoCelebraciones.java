@@ -6,6 +6,7 @@ package ed.davidnavarroc.tarea1;
 
 import ed.davidnavarroc.tarea1.Celebracion;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,11 +23,13 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
     }
     
     private void cargarCelebraciones(){
-        DefaultTableModel modeloTable = (DefaultTableModel) tablaCelebraciones.getModel();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaCelebraciones.getModel();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         
-        for (Celebracion datoCelebracion : gestor.getCelebraciones()){
-            modeloTable.addRow(new Object[]{
+        Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator();
+        while (iterarCelebrarciones.hasNext()){
+            Celebracion datoCelebracion = iterarCelebrarciones.next();
+            modeloTabla.addRow(new Object[]{
                 datoCelebracion.getId(),
                 formatoFecha.format(datoCelebracion.getFecha()),
                 datoCelebracion.getDescripcion(),

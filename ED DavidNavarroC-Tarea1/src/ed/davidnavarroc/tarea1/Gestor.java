@@ -44,4 +44,8 @@ public class Gestor {
         this.celebraciones.get(i).mostrarCelebracion();
         }  
     }
+    
+    public void buscarPais (String paisIngresado){
+        
+    }
 }

@@ -121,6 +121,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMenuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuEditarActionPerformed
         // TODO add your handling code here:
+        BuscarEditarCelebraciones ventanaBuscarEditar = new BuscarEditarCelebraciones(gestor);
+        ventanaBuscarEditar.setVisible(true);
+        ventanaBuscarEditar.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuEditarActionPerformed
 
     private void btnMenuOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarActionPerformed
