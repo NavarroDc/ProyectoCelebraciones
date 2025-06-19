@@ -16,7 +16,7 @@ public class RegistroCelebraciones extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarCelebraciones
      */
-    public RegistroCelebraciones() {do
+    public RegistroCelebraciones() {
         initComponents();
     }
 
@@ -59,7 +59,7 @@ public class RegistroCelebraciones extends javax.swing.JFrame {
 
         txtPais.setText("jTextField1");
 
-        botonRegistrar.setText("jButton1");
+        botonRegistrar.setText("Registrar");
         botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarActionPerformed(evt);

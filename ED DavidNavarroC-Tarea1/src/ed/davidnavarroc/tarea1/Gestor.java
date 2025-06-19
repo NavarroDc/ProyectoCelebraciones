@@ -17,7 +17,8 @@ public class Gestor {
     private int agregarID = 1;
     
     public void registrarCelebracion(Date fecha, String descripcion, String pais){
-        Celebracion nuevaCelebracion = new Celebracion(agregarID++, fecha, descripcion, pais);
+        this.agregarID = this.agregarID + 1;
+        Celebracion nuevaCelebracion = new Celebracion(agregarID, fecha, descripcion, pais);
         celebraciones.add(nuevaCelebracion); 
     }
 }

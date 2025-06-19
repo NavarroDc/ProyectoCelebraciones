@@ -58,8 +58,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnMenuInvertir.setText("Países invertidos");
+        btnMenuInvertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuInvertirActionPerformed(evt);
+            }
+        });
 
         btnMenuOrdenar.setText("Ordenar celebraciones");
+        btnMenuOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuOrdenarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,11 +110,22 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMenuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuRegistrarActionPerformed
         // TODO add your handling code here:
+        RegistroCelebraciones ventanaRegistro = new RegistroCelebraciones();
+        ventanaRegistro.setVisible(true);
+        ventanaRegistro.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuRegistrarActionPerformed
 
     private void btnMenuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMenuEditarActionPerformed
+
+    private void btnMenuOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenuOrdenarActionPerformed
+
+    private void btnMenuInvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuInvertirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenuInvertirActionPerformed
 
     /**
      * @param args the command line arguments
