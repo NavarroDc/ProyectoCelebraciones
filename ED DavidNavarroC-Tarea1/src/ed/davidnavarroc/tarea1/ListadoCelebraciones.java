@@ -4,6 +4,10 @@
  */
 package ed.davidnavarroc.tarea1;
 
+import ed.davidnavarroc.tarea1.Celebracion;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author angel
@@ -17,11 +21,26 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
         this.gestor = gestor;
     }
     
+    private void cargarCelebraciones(){
+        DefaultTableModel modeloTable = (DefaultTableModel) tablaCelebraciones.getModel();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        
+        for (Celebracion datoCelebracion : gestor.getCelebraciones()){
+            modeloTable.addRow(new Object[]{
+                datoCelebracion.getId(),
+                formatoFecha.format(datoCelebracion.getFecha()),
+                datoCelebracion.getDescripcion(),
+                datoCelebracion.getPais()
+            });
+        }
+    }
     /**
      * Creates new form ListadoCelebraciones
      */
-    public ListadoCelebraciones() {
+    public ListadoCelebraciones(Gestor gestor) {
+        this.gestor = gestor;
         initComponents();
+        cargarCelebraciones();
     }
 
     /**
@@ -40,15 +59,20 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
 
         tablaCelebraciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
                 "ID", "Fecha", "Descripción", "País"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaCelebraciones);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,27 +98,7 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ListadoCelebraciones().setVisible(true));
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

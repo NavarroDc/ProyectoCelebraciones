@@ -90,15 +90,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(btnMenuRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMenuLista, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMenuEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMenuInvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMenuOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,9 +106,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMenuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuListaActionPerformed
         // TODO add your handling code here:
-        ListadoCelebraciones ventanaLista = new ListadoCelebraciones();
+        ListadoCelebraciones ventanaLista = new ListadoCelebraciones(gestor);
         ventanaLista.setVisible(true);
-        ventanaLista.recibirGestor(gestor);
         ventanaLista.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuListaActionPerformed
 
