@@ -18,6 +18,6 @@ public class Gestor {
     
     public void registrarCelebracion(Date fecha, String descripcion, String pais){
         Celebracion nuevaCelebracion = new Celebracion(agregarID++, fecha, descripcion, pais);
-        celebraciones.add(nuevaCelebracion);
+        celebraciones.add(nuevaCelebracion); 
     }
 }
