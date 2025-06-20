@@ -7,6 +7,7 @@ package ed.davidnavarroc.tarea1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -45,7 +46,17 @@ public class Gestor {
         }  
     }
     
-    public void buscarPais (String paisIngresado){
-        
+    public ArrayList<Celebracion> buscarPais (String paisIngresado){
+        ArrayList<Celebracion> celebracionesEncontradas = new ArrayList<>();
+       
+        Iterator<Celebracion> itCelebraciones = this.celebraciones.iterator();
+        while(itCelebraciones.hasNext()){
+            Celebracion celebracionEncontrada = itCelebraciones.next();
+            String pais = celebracionEncontrada.getPais().toUpperCase().trim();
+            if(pais.contains(paisIngresado.toUpperCase().trim())){
+                celebracionesEncontradas.add(celebracionEncontrada);
+            }
+        }
+        return celebracionesEncontradas;
     }
 }
