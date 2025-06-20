@@ -4,9 +4,13 @@
  */
 package ed.davidnavarroc.tarea1;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -67,11 +71,16 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tablaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaResultadosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tablaResultados);
@@ -136,6 +145,14 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
             });
         }
     }//GEN-LAST:event_botonBuscarPaisActionPerformed
+
+    private void tablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaResultadosMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaResultados.getModel();
+        String identicador = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 0).toString();
+        System.out.println(identicador);
+        int filaSeleccionada = tablaResultados.getSelectedRow();
+    }//GEN-LAST:event_tablaResultadosMouseClicked
     
     
     /**
