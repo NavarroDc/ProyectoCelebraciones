@@ -7,8 +7,11 @@ package ed.davidnavarroc.tarea1;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.Locale;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -44,6 +47,16 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         botonBuscarPais = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaResultados = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        editDescripcion = new javax.swing.JTextField();
+        editPais = new javax.swing.JTextField();
+        botonEditar = new javax.swing.JButton();
+        editFecha = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
+        identificadorEdicion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +98,39 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaResultados);
 
+        jLabel2.setText("Editar datos");
+
+        jLabel3.setText("Editar fecha (dd/MM/yyyy)");
+
+        jLabel4.setText("Editar descripción");
+
+        jLabel5.setText("Editar país:");
+
+        editPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPaisActionPerformed(evt);
+            }
+        });
+
+        botonEditar.setText("Editar");
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
+
+        editFecha.setModel(new javax.swing.SpinnerDateModel());
+        editFecha.setEditor(new javax.swing.JSpinner.DateEditor(editFecha, "dd/MM/yyyy"));
+
+        jLabel6.setText("ID:");
+
+        identificadorEdicion.setEditable(false);
+        identificadorEdicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                identificadorEdicionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,6 +145,28 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(identificadorEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(editDescripcion)
+                            .addComponent(editPais)
+                            .addComponent(editFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +182,31 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(identificadorEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(editFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(editDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)))
+                        .addGap(45, 45, 45))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(editPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
+                .addGap(53, 53, 53)
+                .addComponent(botonEditar)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,11 +240,46 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
 
     private void tablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaResultadosMouseClicked
         // TODO add your handling code here:
+        try{
+        //SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MMM/yyyy", Locale.ENGLISH);
+        
         DefaultTableModel modeloTabla = (DefaultTableModel) tablaResultados.getModel();
         String identicador = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 0).toString();
+        String stringFecha = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 1).toString();
+        Date date = new Date(stringFecha);
         System.out.println(identicador);
+        String descripcion = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 2).toString();
+        String pais = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 3).toString();
         int filaSeleccionada = tablaResultados.getSelectedRow();
+        
+        identificadorEdicion.setText(identicador);
+        editFecha.setValue(date);
+        editDescripcion.setText(descripcion);
+        editPais.setText(pais);
+       
+        }catch(Exception e){
+             System.out.println(e);
+        }
+        
+        
     }//GEN-LAST:event_tablaResultadosMouseClicked
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+        // TODO add your handling code here:
+        int idEdit = Integer.parseInt(identificadorEdicion.getText());
+        Date fechaEdit = (Date)editFecha.getValue();
+        String descripcionEdit = editDescripcion.getText();
+        String paisEdit = editPais.getText();
+        
+    }//GEN-LAST:event_botonEditarActionPerformed
+
+    private void editPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editPaisActionPerformed
+
+    private void identificadorEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificadorEdicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_identificadorEdicionActionPerformed
     
     
     /**
@@ -162,7 +289,17 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarPais;
+    private javax.swing.JButton botonEditar;
+    private javax.swing.JTextField editDescripcion;
+    private javax.swing.JSpinner editFecha;
+    private javax.swing.JTextField editPais;
+    private javax.swing.JTextField identificadorEdicion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaResultados;
     private javax.swing.JTextField txtBuscarPais;
