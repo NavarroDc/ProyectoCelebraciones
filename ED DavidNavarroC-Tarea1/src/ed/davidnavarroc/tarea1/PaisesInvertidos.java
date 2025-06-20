@@ -4,7 +4,6 @@
  */
 package ed.davidnavarroc.tarea1;
 
-import ed.davidnavarroc.tarea1.Celebracion;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
@@ -13,37 +12,36 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author angel
  */
-public class ListadoCelebraciones extends javax.swing.JFrame {
+public class PaisesInvertidos extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListadoCelebraciones.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PaisesInvertidos.class.getName());
     private Gestor gestor;
+    /**
+     * Creates new form PaisesInvertidos
+     */
     
-    public void recibirGestor(Gestor gestor){
-        this.gestor = gestor;
-    }
-    
-    private void cargarCelebraciones(){
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaCelebraciones.getModel();
+    private void cargarPaisesInvertidos(){
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaPaisesInvertidos.getModel();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         
-        Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator();
-        while (iterarCelebrarciones.hasNext()){
-            Celebracion datoCelebracion = iterarCelebrarciones.next();
+        Iterator<Celebracion> iterarInvertido = gestor.getCelebraciones().iterator();
+        while (iterarInvertido.hasNext()){
+            
+            Celebracion datoCelebracion = iterarInvertido.next();
             modeloTabla.addRow(new Object[]{
                 datoCelebracion.getId(),
                 formatoFecha.format(datoCelebracion.getFecha()),
                 datoCelebracion.getDescripcion(),
-                datoCelebracion.getPais()
+                datoCelebracion.getPais(),
+                datoCelebracion.invertirPaises()
             });
         }
     }
-    /**
-     * Creates new form ListadoCelebraciones
-     */
-    public ListadoCelebraciones(Gestor gestor) {
+    
+    public PaisesInvertidos(Gestor gestor) {
         this.gestor = gestor;
         initComponents();
-        cargarCelebraciones();
+        cargarPaisesInvertidos();
     }
 
     /**
@@ -56,43 +54,43 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaCelebraciones = new javax.swing.JTable();
+        tablaPaisesInvertidos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tablaCelebraciones.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPaisesInvertidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Fecha", "Descripción", "País"
+                "ID", "Fecha", "Descripción", "País", "País invertido"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaCelebraciones);
+        jScrollPane1.setViewportView(tablaPaisesInvertidos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -102,9 +100,8 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaCelebraciones;
+    private javax.swing.JTable tablaPaisesInvertidos;
     // End of variables declaration//GEN-END:variables
 }

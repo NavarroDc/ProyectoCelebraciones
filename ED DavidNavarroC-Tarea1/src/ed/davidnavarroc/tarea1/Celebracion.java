@@ -57,4 +57,17 @@ public class Celebracion {
     public void mostrarCelebracion(){
         System.out.println(Integer.toString(id) + " " + fecha.toString() + " " + descripcion + " "+pais);
     }
+    
+    private String invertirPalabra(String palabra){
+        if(palabra == null || palabra.length()<=1){
+            return palabra;
+        }else{
+            return this.invertirPalabra(palabra.substring(1))  + palabra.charAt(0);
+        }
+    }  
+    
+    public String invertirPaises(){
+        return this.invertirPalabra(this.pais);
+    }
+    
 }

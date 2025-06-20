@@ -4,6 +4,8 @@
  */
 package ed.davidnavarroc.tarea1;
 
+import java.util.Iterator;
+
 /**
  *
  * @author angel
@@ -132,6 +134,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMenuInvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuInvertirActionPerformed
         // TODO add your handling code here:
+        PaisesInvertidos ventanaPaisesInvertidos = new PaisesInvertidos(gestor);
+        ventanaPaisesInvertidos.setVisible(true);
+        ventanaPaisesInvertidos.setLocationRelativeTo(null);
+        
+        
+        
     }//GEN-LAST:event_btnMenuInvertirActionPerformed
 
     /**
