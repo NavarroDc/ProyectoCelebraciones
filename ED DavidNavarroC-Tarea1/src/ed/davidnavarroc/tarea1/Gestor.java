@@ -59,4 +59,17 @@ public class Gestor {
         }
         return celebracionesEncontradas;
     }
+    
+    public void editarCelebracion(int id, Date fecha, String descripción, String pais){
+        Iterator<Celebracion> itCelebraciones = this.celebraciones.iterator();
+        while(itCelebraciones.hasNext()){
+            Celebracion celebracionEncontrada = itCelebraciones.next();
+            
+            if (celebracionEncontrada.getId() == id){
+                celebracionEncontrada.setFecha(fecha);
+                celebracionEncontrada.setDescripcion(descripción);
+                celebracionEncontrada.setPais(pais);
+            }
+        }
+    }
 }

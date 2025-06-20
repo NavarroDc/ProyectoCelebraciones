@@ -32,6 +32,27 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         initComponents();
         
     }
+    
+    private void tablaEdit(){
+        String paisBuscado = txtBuscarPais.getText();
+        ArrayList<Celebracion> celebracionesEncontradas = gestor.buscarPais(paisBuscado);
+        
+        DefaultTableModel modTablaResultados = (DefaultTableModel) tablaResultados.getModel();
+        modTablaResultados.setRowCount(0);
+        
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Iterator<Celebracion> itCelebracionEncontrada = celebracionesEncontradas.iterator();
+        while(itCelebracionEncontrada.hasNext()){
+            Celebracion datoCelebracion = itCelebracionEncontrada.next();
+            modTablaResultados.addRow(new Object[]{
+                datoCelebracion.getId(),
+                formatoFecha.format(datoCelebracion.getFecha()),
+                datoCelebracion.getDescripcion(),
+                datoCelebracion.getPais()
+            });
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -271,6 +292,8 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         String descripcionEdit = editDescripcion.getText();
         String paisEdit = editPais.getText();
         
+        gestor.editarCelebracion(idEdit, fechaEdit, descripcionEdit, paisEdit); 
+        this.tablaEdit();
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void editPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPaisActionPerformed
@@ -280,6 +303,7 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
     private void identificadorEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificadorEdicionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_identificadorEdicionActionPerformed
+    
     
     
     /**
