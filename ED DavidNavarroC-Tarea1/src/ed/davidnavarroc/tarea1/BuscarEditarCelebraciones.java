@@ -4,7 +4,10 @@
  */
 package ed.davidnavarroc.tarea1;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -116,6 +119,22 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         // TODO add your handling code here:
         String paisBuscado = txtBuscarPais.getText();
         ArrayList<Celebracion> celebracionesEncontradas = gestor.buscarPais(paisBuscado);
+        
+        DefaultTableModel modTablaResultados = (DefaultTableModel) tablaResultados.getModel();
+        modTablaResultados.setRowCount(0);
+        
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Iterator<Celebracion> itCelebracionEncontrada = celebracionesEncontradas.iterator();
+        while(itCelebracionEncontrada.hasNext()){
+            Celebracion datoCelebracion = itCelebracionEncontrada.next();
+            modTablaResultados.addRow(new Object[]{
+                datoCelebracion.getId(),
+                formatoFecha.format(datoCelebracion.getFecha()),
+                datoCelebracion.getDescripcion(),
+                datoCelebracion.getPais()
+            });
+        }
     }//GEN-LAST:event_botonBuscarPaisActionPerformed
     
     
