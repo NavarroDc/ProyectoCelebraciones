@@ -30,7 +30,8 @@
                   <Component id="btnMenuRegistrar" pref="206" max="32767" attributes="0"/>
                   <Component id="btnMenuLista" max="32767" attributes="0"/>
                   <Component id="btnMenuInvertir" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnMenuOrdenar" max="32767" attributes="0"/>
+                  <Component id="btnMenuOrdenarMerge" max="32767" attributes="0"/>
+                  <Component id="btnMenuOrdenarInsercion" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="513" max="32767" attributes="0"/>
           </Group>
@@ -48,8 +49,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnMenuInvertir" min="-2" pref="52" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnMenuOrdenar" min="-2" pref="51" max="-2" attributes="0"/>
-              <EmptySpace pref="208" max="32767" attributes="0"/>
+              <Component id="btnMenuOrdenarMerge" min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnMenuOrdenarInsercion" min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace pref="138" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,12 +90,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuInvertirActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMenuOrdenar">
+    <Component class="javax.swing.JButton" name="btnMenuOrdenarMerge">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ordenar celebraciones"/>
+        <Property name="text" type="java.lang.String" value="Ordenar MergeSort"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuOrdenarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuOrdenarMergeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMenuOrdenarInsercion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ordenar Inserci&#xf3;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuOrdenarInsercionActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

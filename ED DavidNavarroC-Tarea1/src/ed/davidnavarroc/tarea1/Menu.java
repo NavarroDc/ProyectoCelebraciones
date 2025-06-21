@@ -34,7 +34,8 @@ public class Menu extends javax.swing.JFrame {
         btnMenuRegistrar = new javax.swing.JButton();
         btnMenuEditar = new javax.swing.JButton();
         btnMenuInvertir = new javax.swing.JButton();
-        btnMenuOrdenar = new javax.swing.JButton();
+        btnMenuOrdenarMerge = new javax.swing.JButton();
+        btnMenuOrdenarInsercion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,10 +67,17 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btnMenuOrdenar.setText("Ordenar celebraciones");
-        btnMenuOrdenar.addActionListener(new java.awt.event.ActionListener() {
+        btnMenuOrdenarMerge.setText("Ordenar MergeSort");
+        btnMenuOrdenarMerge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuOrdenarActionPerformed(evt);
+                btnMenuOrdenarMergeActionPerformed(evt);
+            }
+        });
+
+        btnMenuOrdenarInsercion.setText("Ordenar Inserción");
+        btnMenuOrdenarInsercion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuOrdenarInsercionActionPerformed(evt);
             }
         });
 
@@ -84,7 +92,8 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(btnMenuRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                     .addComponent(btnMenuLista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMenuInvertir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMenuOrdenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnMenuOrdenarMerge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMenuOrdenarInsercion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(513, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,8 +108,10 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMenuInvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMenuOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addComponent(btnMenuOrdenarMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMenuOrdenarInsercion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,19 +139,26 @@ public class Menu extends javax.swing.JFrame {
         ventanaBuscarEditar.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuEditarActionPerformed
 
-    private void btnMenuOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarActionPerformed
+    private void btnMenuOrdenarMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarMergeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnMenuOrdenarActionPerformed
+        OrdenarCelebracionesMerge ventanaOrdenar = new OrdenarCelebracionesMerge(gestor);
+        ventanaOrdenar.setVisible(true);
+        ventanaOrdenar.setLocationRelativeTo(null);
+        
+        
+    }//GEN-LAST:event_btnMenuOrdenarMergeActionPerformed
 
     private void btnMenuInvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuInvertirActionPerformed
         // TODO add your handling code here:
         PaisesInvertidos ventanaPaisesInvertidos = new PaisesInvertidos(gestor);
         ventanaPaisesInvertidos.setVisible(true);
         ventanaPaisesInvertidos.setLocationRelativeTo(null);
-        
-        
-        
     }//GEN-LAST:event_btnMenuInvertirActionPerformed
+
+    private void btnMenuOrdenarInsercionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarInsercionActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnMenuOrdenarInsercionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,7 +189,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnMenuEditar;
     private javax.swing.JButton btnMenuInvertir;
     private javax.swing.JButton btnMenuLista;
-    private javax.swing.JButton btnMenuOrdenar;
+    private javax.swing.JButton btnMenuOrdenarInsercion;
+    private javax.swing.JButton btnMenuOrdenarMerge;
     private javax.swing.JButton btnMenuRegistrar;
     // End of variables declaration//GEN-END:variables
 }

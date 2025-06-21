@@ -133,7 +133,7 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
             }
         });
 
-        botonEditar.setText("Editar");
+        botonEditar.setText("Guardar");
         botonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEditarActionPerformed(evt);
