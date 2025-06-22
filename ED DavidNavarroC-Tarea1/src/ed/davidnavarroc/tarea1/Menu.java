@@ -165,7 +165,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMenuOrdenarInsercionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarInsercionActionPerformed
         // TODO add your handling code here:
-        
+        OrdernarCelebracionInsercion ventanaOrdenar = new  OrdernarCelebracionInsercion(gestor);
+        ventanaOrdenar.setVisible(true);
+        ventanaOrdenar.setLocationRelativeTo(null);
+         
     }//GEN-LAST:event_btnMenuOrdenarInsercionActionPerformed
 
     /**

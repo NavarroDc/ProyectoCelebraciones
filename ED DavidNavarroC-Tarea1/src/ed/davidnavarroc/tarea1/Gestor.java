@@ -118,11 +118,11 @@ public class Gestor {
     }
     
     public void mergeArrayList(ArrayList<Celebracion> arr, int l, int m, int r) {
-    // Find sizes of two subarrays to be merged
+   
     int n1 = m - l + 1;
     int n2 = r - m;
 
-    // Create temp ArrayLists
+    
     ArrayList<Celebracion> L = new ArrayList<Celebracion>(n1);
     for (int i = 0; i < n1; ++i) {
       L.add(null);
@@ -133,7 +133,7 @@ public class Gestor {
       R.add(null);
     }
 
-    // Copy data to temp arrays
+    
     for (int i = 0; i < n1; ++i) {
       // L[i] = arr[l + i];
       L.set(i, arr.get(l + i));
@@ -143,12 +143,12 @@ public class Gestor {
       R.set(j, arr.get(m + 1 + j));
     }
 
-    // Merge the temp arrays
+    
 
-    // Initial indices of first and second subarrays
+    
     int i = 0, j = 0;
 
-    // Initial index of merged subarray array
+    
     int k = l;
     while (i < n1 && j < n2) {
       // L[i] > R[j]
@@ -164,7 +164,7 @@ public class Gestor {
       k++;
     }
 
-    // Copy remaining elements of L[] if any
+   
     while (i < n1) {
       // arr[k] = L[i];
       arr.set(k, L.get(i));
@@ -172,7 +172,7 @@ public class Gestor {
       k++;
     }
 
-    // Copy remaining elements of R[] if any
+    
     while (j < n2) {
       // arr[k] = R[j];
       arr.set(k, R.get(j));
@@ -184,34 +184,31 @@ public class Gestor {
     public void mergeSortArrayList(ArrayList<Celebracion> arr, int l, int r) {
     if (l < r) {
 
-      // Find the middle point
+      
       int m = l + (r - l) / 2;
 
-      // Sort first and second halves
+      
       mergeSortArrayList(arr, l, m);
       mergeSortArrayList(arr, m + 1, r);
 
-      // Merge the sorted halves
+      
       mergeArrayList(arr, l, m, r);
     }
   }
     
-    public void insertionSort() {
-    ArrayList<Celebracion> arr = this.celebraciones;
-    int n = arr.size();
-    for (int i = 1; i < n; ++i) {
-      Celebracion key = arr.get(i);
-      int j = i - 1;
-      /*
-       * Move elements of arr[0..i-1], that are
-       * greater than key, to one position ahead
-       * of their current position
-       */
-      while (j >= 0 && esMayorQue(key, arr.get(j))) {
-        arr.set(j + 1, arr.get(j));
-        j = j - 1;
-      }
-      arr.set(j + 1, key);
+    public void insertionSort(ArrayList<Celebracion> arr) {
+        int n = arr.size();
+        for (int i = 1; i < n; ++i) {
+        Celebracion key = arr.get(i);
+        int j = i - 1;
+        
+        while (j >= 0 && esMayorQue(arr.get(j), key)) {
+            //arr[j + 1] = arr[j];
+            arr.set(j+1, arr.get(j));
+            j = j - 1;
+        }
+        //arr[j + 1] = key;
+        arr.set(j+1,key);
     }
   }
 }

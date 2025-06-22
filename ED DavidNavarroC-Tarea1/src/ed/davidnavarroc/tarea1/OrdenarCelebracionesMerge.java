@@ -21,11 +21,11 @@ public class OrdenarCelebracionesMerge extends javax.swing.JFrame {
      * Creates new form OrdenarCelebraciones
      */
     
-    public void cargarOrdenadas (){
+    public void cargarOrdenadasMerge (){
         gestor.mergeSortArrayList(gestor.getCelebraciones(), 0, gestor.getCelebraciones().size() - 1);
         
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaOrdenar.getModel();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaOrdenarMerge.getModel();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
         
         Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator();
         while (iterarCelebrarciones.hasNext()){
@@ -38,10 +38,11 @@ public class OrdenarCelebracionesMerge extends javax.swing.JFrame {
             });
         }
     }
+    
     public OrdenarCelebracionesMerge(Gestor gestor) {
         this.gestor = gestor;
         initComponents();
-        cargarOrdenadas ();
+        cargarOrdenadasMerge ();
         
     }
 
@@ -55,13 +56,14 @@ public class OrdenarCelebracionesMerge extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaOrdenar = new javax.swing.JTable();
+        tablaOrdenarMerge = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tablaOrdenar.setModel(new javax.swing.table.DefaultTableModel(
+        tablaOrdenarMerge.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Fecha", "Descripción", "País"
@@ -75,23 +77,32 @@ public class OrdenarCelebracionesMerge extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaOrdenar);
+        jScrollPane1.setViewportView(tablaOrdenarMerge);
+
+        jLabel1.setText("MergeSort");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(346, 346, 346))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -103,7 +114,8 @@ public class OrdenarCelebracionesMerge extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaOrdenar;
+    private javax.swing.JTable tablaOrdenarMerge;
     // End of variables declaration//GEN-END:variables
 }
