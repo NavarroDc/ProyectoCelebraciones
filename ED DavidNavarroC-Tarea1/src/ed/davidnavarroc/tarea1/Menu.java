@@ -13,6 +13,8 @@ import java.util.Iterator;
 public class Menu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
+    
+    //Instancia de Gestor para centralizar la lógica y la gestión de las celebraciones
     private Gestor gestor = new Gestor();
     /**
      * Creates new form Menu
@@ -117,28 +119,34 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Función que se ejecuta al presionar el botón Lista de celebraciones
     private void btnMenuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuListaActionPerformed
         // TODO add your handling code here:
-        ListadoCelebraciones ventanaLista = new ListadoCelebraciones(gestor);
+        ListadoCelebraciones ventanaLista = new ListadoCelebraciones(gestor);//Se crea una instancia de la ventana de la lista de las celebraciones
+        //La ventana se hace visible y se centra
         ventanaLista.setVisible(true);
         ventanaLista.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuListaActionPerformed
 
+    //Función que se ejecuta al presionar el botón Registrar en el menú
     private void btnMenuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuRegistrarActionPerformed
         // TODO add your handling code here:
-        RegistroCelebraciones ventanaRegistro = new RegistroCelebraciones();
-        ventanaRegistro.setVisible(true);
-        ventanaRegistro.recibirGestor(gestor);
-        ventanaRegistro.setLocationRelativeTo(null);
+        RegistroCelebraciones ventanaRegistro = new RegistroCelebraciones();//Se crea una instancia de la ventana de registro
+        ventanaRegistro.setVisible(true);        //La ventana se hace visible
+        ventanaRegistro.recibirGestor(gestor);   //Se envía el formulario de Registrar la instancia de Gestor
+        ventanaRegistro.setLocationRelativeTo(null); //Se centra la ventana
     }//GEN-LAST:event_btnMenuRegistrarActionPerformed
 
+    //Función que se ejecuta al presionar el botón de Editar/Buscar en el menú
     private void btnMenuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuEditarActionPerformed
         // TODO add your handling code here:
-        BuscarEditarCelebraciones ventanaBuscarEditar = new BuscarEditarCelebraciones(gestor);
+        BuscarEditarCelebraciones ventanaBuscarEditar = new BuscarEditarCelebraciones(gestor); //Se crea una instancia de la ventana Buscar/Editar
+        //La ventana se hace visible y se centra
         ventanaBuscarEditar.setVisible(true);
         ventanaBuscarEditar.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuEditarActionPerformed
 
+    
     private void btnMenuOrdenarMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarMergeActionPerformed
         // TODO add your handling code here:
         OrdenarCelebracionesMerge ventanaOrdenar = new OrdenarCelebracionesMerge(gestor);

@@ -4,6 +4,7 @@
  */
 package ed.davidnavarroc.tarea1;
 
+//Librerias
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -15,15 +16,18 @@ import java.util.Iterator;
  */
 public class Gestor {
     
+    //Inicialización del Array celebraciones y el contador de ID
     private ArrayList<Celebracion> celebraciones = new ArrayList<>();
     private int agregarID = 1;
     
+    //Método para registrar una nueva celebreación
     public void registrarCelebracion(Date fecha, String descripcion, String pais){
         Celebracion nuevaCelebracion = new Celebracion(agregarID, fecha, descripcion, pais);
         celebraciones.add(nuevaCelebracion); 
-        this.agregarID = this.agregarID + 1;
+        this.agregarID = this.agregarID + 1; //ID único
     }
-
+    
+    //Getters y Setters
     public ArrayList<Celebracion> getCelebraciones() {
         return celebraciones;
     }
@@ -40,35 +44,38 @@ public class Gestor {
         this.agregarID = agregarID;
     }
     
+    //Este método se relaciona con mostrarCelebracion() para hacer pruebas en consola con los datos
     public void imprimirCelebraciones() {
       for(int i = 0; i < this.celebraciones.size(); i++) {   
         this.celebraciones.get(i).mostrarCelebracion();
         }  
     }
     
+    //Busca celebraciones de acuerdo al texto ingresado por el usuario
     public ArrayList<Celebracion> buscarPais (String paisIngresado){
-        ArrayList<Celebracion> celebracionesEncontradas = new ArrayList<>();
+        ArrayList<Celebracion> celebracionesEncontradas = new ArrayList<>();//Array inicializado de celebraciones encontradas
        
-        Iterator<Celebracion> itCelebraciones = this.celebraciones.iterator();
-        while(itCelebraciones.hasNext()){
+        Iterator<Celebracion> itCelebraciones = this.celebraciones.iterator();//Se crea el iterator para recorrer el array de celebraciones
+        while(itCelebraciones.hasNext()){//Mientras haya elementos en el array, se obtiene el siguiente
             Celebracion celebracionEncontrada = itCelebraciones.next();
-            String pais = celebracionEncontrada.getPais().toUpperCase().trim();
-            if(pais.contains(paisIngresado.toUpperCase().trim())){
+            String pais = celebracionEncontrada.getPais().toUpperCase().trim();//Se obtiene el país de la celebración, se pasan las letras a mayúsculas y se eliminan espacios
+            if(pais.contains(paisIngresado.toUpperCase().trim())){//Si la string el país contiene caracteres que coindicen con el input del usuario, se agrega a celebracionesEncontradas
                 celebracionesEncontradas.add(celebracionEncontrada);
             }
         }
-        return celebracionesEncontradas;
+        return celebracionesEncontradas; //Retorna las celebraciones encontradas
     }
     
+    //Función para editar una celebración existente de acuerdo a su ID
     public void editarCelebracion(int id, Date fecha, String descripción, String pais){
-        Iterator<Celebracion> itCelebraciones = this.celebraciones.iterator();
-        while(itCelebraciones.hasNext()){
+        Iterator<Celebracion> itCelebraciones = this.celebraciones.iterator();//Iterator para recorrer la lista de celebraciones
+        while(itCelebraciones.hasNext()){//Mientras haya elementos en el array, se obtiene el siguiente
             Celebracion celebracionEncontrada = itCelebraciones.next();
             
-            if (celebracionEncontrada.getId() == id){
+            if (celebracionEncontrada.getId() == id){ //Verifica si la celebración actual tiene el mismo ID que la celebración a editar
                 celebracionEncontrada.setFecha(fecha);
                 celebracionEncontrada.setDescripcion(descripción);
-                celebracionEncontrada.setPais(pais);
+                celebracionEncontrada.setPais(pais);//Si el ID es el mismo, los valors se cambian a los nuevos (editados)
             }
         }
     }
