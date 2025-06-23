@@ -24,31 +24,34 @@ import javax.swing.table.DefaultTableModel;
 public class BuscarEditarCelebraciones extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BuscarEditarCelebraciones.class.getName());
-    private Gestor gestor;
+    private Gestor gestor;//Referencia del gestor centralizado
     /**
      * Creates new form BuscarEditarCelebraciones
      */
-    public BuscarEditarCelebraciones(Gestor gestor) {
+    public BuscarEditarCelebraciones(Gestor gestor) {//Método público para compartir la misma instancia con otras ventanas
         this.gestor = gestor;
         initComponents();
         
     }
     
+    //Función que actualiza la tabla de resultado cuando el usuario hace la búsqueda por medio del país
     private void tablaEdit(){
-        String paisBuscado = txtBuscarPais.getText();
-        ArrayList<Celebracion> celebracionesEncontradas = gestor.buscarPais(paisBuscado);
+        String paisBuscado = txtBuscarPais.getText();//Obtiene el país ingresado por el usuario
+        ArrayList<Celebracion> celebracionesEncontradas = gestor.buscarPais(paisBuscado);//Invoca al gestor para buscar las celebraciones que coinciden con el país ingresado
         
-        DefaultTableModel modTablaResultados = (DefaultTableModel) tablaResultados.getModel();
-        modTablaResultados.setRowCount(0);
+        DefaultTableModel modTablaResultados = (DefaultTableModel) tablaResultados.getModel(); // Obtiene el modelo de la tabla donde se mostrarán los resultados
+        modTablaResultados.setRowCount(0);//Limpia la fila previa antes de mostrar resultados nuevos
         
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//Formato de fecha
         
-        Iterator<Celebracion> itCelebracionEncontrada = celebracionesEncontradas.iterator();
+        Iterator<Celebracion> itCelebracionEncontrada = celebracionesEncontradas.iterator();//Itera sobre la lista de celebraciones encontradas
+
         while(itCelebracionEncontrada.hasNext()){
             Celebracion datoCelebracion = itCelebracionEncontrada.next();
+            //Se agrega cada celebración en una fila nueva con sus respectivos datos
             modTablaResultados.addRow(new Object[]{
                 datoCelebracion.getId(),
-                formatoFecha.format(datoCelebracion.getFecha()),
+                formatoFecha.format(datoCelebracion.getFecha()),//Fecha formateada
                 datoCelebracion.getDescripcion(),
                 datoCelebracion.getPais()
             });
@@ -238,22 +241,24 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarPaisActionPerformed
 
+    //Esta función se ejecuta al presionar el botón Buscar país
     private void botonBuscarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPaisActionPerformed
         // TODO add your handling code here:
-        String paisBuscado = txtBuscarPais.getText();
-        ArrayList<Celebracion> celebracionesEncontradas = gestor.buscarPais(paisBuscado);
+        String paisBuscado = txtBuscarPais.getText();//Obtiene el nombre del país ingresado por el usuario
+        ArrayList<Celebracion> celebracionesEncontradas = gestor.buscarPais(paisBuscado); // Llama al método del gestor para obtener una lista de celebraciones que coincidan con ese país
         
-        DefaultTableModel modTablaResultados = (DefaultTableModel) tablaResultados.getModel();
-        modTablaResultados.setRowCount(0);
+        DefaultTableModel modTablaResultados = (DefaultTableModel) tablaResultados.getModel();//Modelo de la tabla
+        modTablaResultados.setRowCount(0);//Limpia la fila previa antes de mostrar resultados nuevos
         
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//Formato de fecha
         
-        Iterator<Celebracion> itCelebracionEncontrada = celebracionesEncontradas.iterator();
+        Iterator<Celebracion> itCelebracionEncontrada = celebracionesEncontradas.iterator();//Itera sobre la lista de celebraciones encontradas
         while(itCelebracionEncontrada.hasNext()){
             Celebracion datoCelebracion = itCelebracionEncontrada.next();
+             //Se agrega cada celebración en una fila nueva con sus respectivos datos
             modTablaResultados.addRow(new Object[]{
                 datoCelebracion.getId(),
-                formatoFecha.format(datoCelebracion.getFecha()),
+                formatoFecha.format(datoCelebracion.getFecha()),//Fecha formateada
                 datoCelebracion.getDescripcion(),
                 datoCelebracion.getPais()
             });
@@ -265,36 +270,40 @@ public class BuscarEditarCelebraciones extends javax.swing.JFrame {
         try{
         //SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MMM/yyyy", Locale.ENGLISH);
         
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaResultados.getModel();
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaResultados.getModel();//Modelo de la tabla
+        //Se obtiene el ID y la fecha
         String identicador = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 0).toString();
         String stringFecha = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 1).toString();
         Date date = new Date(stringFecha);
-        System.out.println(identicador);
+        System.out.println(identicador);//Método para prueba en consola
+        // Obtiene los demás datos de la fila seleccionada: descripción y país
         String descripcion = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 2).toString();
         String pais = modeloTabla.getValueAt(tablaResultados.getSelectedRow(), 3).toString();
-        int filaSeleccionada = tablaResultados.getSelectedRow();
+        int filaSeleccionada = tablaResultados.getSelectedRow();//Obtiene y guarda el índice de la fila seleccionada
         
+        // Carga los datos obtenidos en la edición por el usuario
         identificadorEdicion.setText(identicador);
         editFecha.setValue(date);
         editDescripcion.setText(descripcion);
         editPais.setText(pais);
        
-        }catch(Exception e){
+        }catch(Exception e){//Pruebas en consola para excepciones
              System.out.println(e);
-        }
-        
-        
+        } 
     }//GEN-LAST:event_tablaResultadosMouseClicked
 
+    //Esta función se ejecuta al presionar el botón buscar/editar 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         // TODO add your handling code here:
-        int idEdit = Integer.parseInt(identificadorEdicion.getText());
+        int idEdit = Integer.parseInt(identificadorEdicion.getText());// Obtiene el ID del registro a editar desde el campo correspondiente y lo convierte a entero
+        //Obtiene los datos editados por el usuario 
         Date fechaEdit = (Date)editFecha.getValue();
         String descripcionEdit = editDescripcion.getText();
         String paisEdit = editPais.getText();
         
-        gestor.editarCelebracion(idEdit, fechaEdit, descripcionEdit, paisEdit); 
-        this.tablaEdit();
+        gestor.editarCelebracion(idEdit, fechaEdit, descripcionEdit, paisEdit); // Se invoca al método del gestor para aplicar los cambios a la celebración con el ID indicado
+
+        this.tablaEdit();//Se vuelva a cargar la tabla con los datos editados
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void editPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPaisActionPerformed

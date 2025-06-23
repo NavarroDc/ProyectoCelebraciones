@@ -4,6 +4,7 @@
  */
 package ed.davidnavarroc.tarea1;
 
+//Librerias
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
@@ -15,33 +16,37 @@ import javax.swing.table.DefaultTableModel;
 public class OrdernarCelebracionInsercion extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OrdernarCelebracionInsercion.class.getName());
-    private Gestor gestor;
+    private Gestor gestor;//Referencia del gestor centralizado
     /**
      * Creates new form OrdernarCelebracionInsercion
      */
     
+    //Esta función implementa la inserción y carga las listas ordenadas
     public void cargarOrdenadasInsercion (){
         gestor.insertionSort(gestor.getCelebraciones());
         
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaOrdenarInsercion.getModel();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
+         // Llama al método del gestor que realiza el ordenamiento por inserción sobre la lista de celebraciones
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaOrdenarInsercion.getModel();//Modelo de la tabla
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");//Formato de la fecha
         
-        Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator();
-        while (iterarCelebrarciones.hasNext()){
+        Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator(); //Iterador para recorrer la lista ordenada de celebraciones
+
+        while (iterarCelebrarciones.hasNext()){// Recorre cada celebración y la agrega como fila en la tabla
             Celebracion datoCelebracion = iterarCelebrarciones.next();
+             // Agrega una nueva fila a la tabla con los datos de la celebración
             modeloTabla.addRow(new Object[]{
                 datoCelebracion.getId(),
-                formatoFecha.format(datoCelebracion.getFecha()),
+                formatoFecha.format(datoCelebracion.getFecha()),//Fecha formateada
                 datoCelebracion.getDescripcion(),
                 datoCelebracion.getPais()
             });
         }
     }
     
-    public OrdernarCelebracionInsercion(Gestor gestor) {
-        this.gestor = gestor;
+    public OrdernarCelebracionInsercion(Gestor gestor) {//Método público para compartir la misma instancia con otras ventanas
+        this.gestor = gestor;//Asigna la instancia del gestor recibida al atributo local de la clase
         initComponents();
-        cargarOrdenadasInsercion ();
+        cargarOrdenadasInsercion ();//Invoca al método que ordena las celebraciones con inserción y las muestra en la tabla
     }
 
     /**

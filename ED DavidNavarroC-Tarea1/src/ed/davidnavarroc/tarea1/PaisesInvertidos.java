@@ -4,6 +4,7 @@
  */
 package ed.davidnavarroc.tarea1;
 
+//Librerias
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
@@ -15,22 +16,24 @@ import javax.swing.table.DefaultTableModel;
 public class PaisesInvertidos extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PaisesInvertidos.class.getName());
-    private Gestor gestor;
+    private Gestor gestor;//Referencia del gestor centralizado
     /**
      * Creates new form PaisesInvertidos
      */
     
+    //Función que carga todas la celebraciones en una tabla con su respectivo país invertido
     private void cargarPaisesInvertidos(){
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaPaisesInvertidos.getModel();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaPaisesInvertidos.getModel();//Modelo de la tabla
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//Formato de la fecha
         
-        Iterator<Celebracion> iterarInvertido = gestor.getCelebraciones().iterator();
-        while (iterarInvertido.hasNext()){
+        Iterator<Celebracion> iterarInvertido = gestor.getCelebraciones().iterator();//Iterador que recorre la lista de las celebraciones
+        while (iterarInvertido.hasNext()){//Se recorre la lista de celebraciones y las agrega como filas a la tabla
             
             Celebracion datoCelebracion = iterarInvertido.next();
+            // Agrega una fila a la tabla con los datos de la celebración, incluyendo el país invertido
             modeloTabla.addRow(new Object[]{
                 datoCelebracion.getId(),
-                formatoFecha.format(datoCelebracion.getFecha()),
+                formatoFecha.format(datoCelebracion.getFecha()),//Fecha formateada
                 datoCelebracion.getDescripcion(),
                 datoCelebracion.getPais(),
                 datoCelebracion.invertirPaises()
@@ -38,10 +41,10 @@ public class PaisesInvertidos extends javax.swing.JFrame {
         }
     }
     
-    public PaisesInvertidos(Gestor gestor) {
-        this.gestor = gestor;
+    public PaisesInvertidos(Gestor gestor) {//Método público para compartir la misma instancia con otras ventanas
+        this.gestor = gestor;//Asigna la instancia del gestor recibida al atributo local de la clase
         initComponents();
-        cargarPaisesInvertidos();
+        cargarPaisesInvertidos();//Invoca al método para cargar las celebraciones con sus respectivos países invertidos
     }
 
     /**
