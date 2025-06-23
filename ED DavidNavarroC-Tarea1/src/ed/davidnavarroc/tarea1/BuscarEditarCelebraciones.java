@@ -4,6 +4,7 @@
  */
 package ed.davidnavarroc.tarea1;
 
+//Librerias
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;

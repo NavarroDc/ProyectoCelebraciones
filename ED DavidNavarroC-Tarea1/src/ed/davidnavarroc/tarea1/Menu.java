@@ -146,29 +146,31 @@ public class Menu extends javax.swing.JFrame {
         ventanaBuscarEditar.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuEditarActionPerformed
 
-    
+    //Función que se ejecuta al presionar el botón de Ordenar MergeSort
     private void btnMenuOrdenarMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarMergeActionPerformed
         // TODO add your handling code here:
-        OrdenarCelebracionesMerge ventanaOrdenar = new OrdenarCelebracionesMerge(gestor);
+        OrdenarCelebracionesMerge ventanaOrdenar = new OrdenarCelebracionesMerge(gestor); //Se crea una instancia de la ventana OrdenarMerge
+        //La ventana se hace visible y se centra
         ventanaOrdenar.setVisible(true);
-        ventanaOrdenar.setLocationRelativeTo(null);
-        
-        
+        ventanaOrdenar.setLocationRelativeTo(null);  
     }//GEN-LAST:event_btnMenuOrdenarMergeActionPerformed
 
+    //Función que se ejecuta al presionar el botón de Países Invertidos
     private void btnMenuInvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuInvertirActionPerformed
         // TODO add your handling code here:
-        PaisesInvertidos ventanaPaisesInvertidos = new PaisesInvertidos(gestor);
+        PaisesInvertidos ventanaPaisesInvertidos = new PaisesInvertidos(gestor); //Se crea una instancia de la ventana PaisesInvertidos
+        //La ventana se hace visible y se muestra
         ventanaPaisesInvertidos.setVisible(true);
         ventanaPaisesInvertidos.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnMenuInvertirActionPerformed
 
+    //Función que se ejecuta al presionar el botón de Ordenar Insercion
     private void btnMenuOrdenarInsercionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuOrdenarInsercionActionPerformed
         // TODO add your handling code here:
-        OrdernarCelebracionInsercion ventanaOrdenar = new  OrdernarCelebracionInsercion(gestor);
+        OrdernarCelebracionInsercion ventanaOrdenar = new  OrdernarCelebracionInsercion(gestor); //Se crea una instancia de la ventana OrdenasInsercion
+        //La ventana se hace visible y se centra
         ventanaOrdenar.setVisible(true);
         ventanaOrdenar.setLocationRelativeTo(null);
-         
     }//GEN-LAST:event_btnMenuOrdenarInsercionActionPerformed
 
     /**

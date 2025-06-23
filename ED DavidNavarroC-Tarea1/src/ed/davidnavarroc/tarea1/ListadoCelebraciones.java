@@ -4,6 +4,7 @@
  */
 package ed.davidnavarroc.tarea1;
 
+//Librerias
 import ed.davidnavarroc.tarea1.Celebracion;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -16,22 +17,24 @@ import javax.swing.table.DefaultTableModel;
 public class ListadoCelebraciones extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListadoCelebraciones.class.getName());
-    private Gestor gestor;
+    private Gestor gestor;//Referencia del gestor centralizado
     
-    public void recibirGestor(Gestor gestor){
+    public void recibirGestor(Gestor gestor){//Método público para compartir la misma instancia con otras ventanas
         this.gestor = gestor;
     }
     
+    //Función que carga las celebraciones ingresadas por el usuario
     private void cargarCelebraciones(){
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaCelebraciones.getModel();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaCelebraciones.getModel();//Obtiene el modelo de la tabla
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//Define el formato para mostrar la fecha (día/mes/año)
         
-        Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator();
+        Iterator<Celebracion> iterarCelebrarciones = gestor.getCelebraciones().iterator();//Iterador para recorrer la lista de celebraciones
+        //Mientras sigan habiendo datos, recorre cada celebración y la agrega como una fila e
         while (iterarCelebrarciones.hasNext()){
             Celebracion datoCelebracion = iterarCelebrarciones.next();
             modeloTabla.addRow(new Object[]{
                 datoCelebracion.getId(),
-                formatoFecha.format(datoCelebracion.getFecha()),
+                formatoFecha.format(datoCelebracion.getFecha()),//Fecha formateada como texto
                 datoCelebracion.getDescripcion(),
                 datoCelebracion.getPais()
             });
@@ -43,7 +46,7 @@ public class ListadoCelebraciones extends javax.swing.JFrame {
     public ListadoCelebraciones(Gestor gestor) {
         this.gestor = gestor;
         initComponents();
-        cargarCelebraciones();
+        cargarCelebraciones();//Método invocado al cargar la ventana
     }
 
     /**

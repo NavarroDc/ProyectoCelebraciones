@@ -13,9 +13,9 @@ import java.util.Date;
 public class RegistroCelebraciones extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistroCelebraciones.class.getName());
-    private Gestor gestor;
+    private Gestor gestor;//Referencia del gestor centralizado
     
-    public void recibirGestor(Gestor gestor){
+    public void recibirGestor(Gestor gestor){ //Método público para compartir la misma instancia con otras ventanas
         this.gestor = gestor;
     }
     
@@ -129,15 +129,17 @@ public class RegistroCelebraciones extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //Función que se ejecuta al presionar el botón de Registrar
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         // TODO add your handling code here:
+        //Obtiene los datos ingresados por el usuario
         Date fecha = (Date) txtFecha.getValue();
         String descripcion = txtDescripcion.getText();
         String pais = txtPais.getText();
         
-        gestor.registrarCelebracion(fecha, descripcion, pais);
-        gestor.imprimirCelebraciones();
+        gestor.registrarCelebracion(fecha, descripcion, pais);//Registra una nueva celebración con los datos ingresados
+        gestor.imprimirCelebraciones();//Invoca a métodp auxliar para pruebas en consola
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
